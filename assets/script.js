@@ -53,10 +53,6 @@ let actuelSlide = 0;
 		actueldot();	
 	  }
 
-	// Fonction pour mettre à jour les classes des points en fonction de l'index actuel
-
-// la première diapositive est celle en cours
-
 
 // Sélection de l'élément conteneur
 const dotsConteneur = document.querySelector("main #banner .dots");
@@ -73,7 +69,7 @@ function actueldot() {
 	  }*/
 	}); 
   }  
-///////
+
 
 slides.forEach((slide, index) => {
 	const nouvelleDiv = document.createElement("div");
