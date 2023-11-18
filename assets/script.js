@@ -19,10 +19,10 @@ const slides = [
     tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
   },
 ];
+
 ///////// variables
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
-let i = 0;
 const BannerImage = document.querySelector('.banner-img');
 const Bannertext = document.querySelector('#banner p');
 let actuelSlide = 0;
@@ -54,69 +54,35 @@ let actuelSlide = 0;
 
 	// Fonction pour mettre à jour les classes des points en fonction de l'index actuel
 
-/*-----------  V2 creer new element sur index.html /----------- 
-------------------------------------------------------------------
-------------------------------------------------------------------*/
-
 // la première diapositive est celle en cours
-slides[0].selected = true;
+
 
 // Sélection de l'élément conteneur
 const dotsConteneur = document.querySelector("main #banner .dots");
 
 ////mise a jours des point dot en fonction image
 function actueldot() {
-	for (let i = 0; i < slides.length; i++) {
-	  const dot = dotsConteneur.children[i];
-  
-	  if (i === actuelSlide) {
+	slides.forEach((slide, index) => {
+	  const dot = dotsConteneur.children[index];
+	  dot.classList.toggle("dot_selected", index === actuelSlide);
+	 /* if (index === actuelSlide) {
 		dot.classList.add("dot_selected");
 	  } else {
 		dot.classList.remove("dot_selected");
-	  }
-	}
+	  }*/
+	}); 
   }  
+///////
 
-// Boucle pour créer des divs associées aux éléments du tableau
-// Création d'une nouvelle div
-// Ajout d'une classe à la nouvelle div
-// Définition du contenu HTML pour la nouvelle div en utilisant les propriétés de l'objet
-
-for (i = 0; i < slides.length; i++) {
-  const nouvelleDiv = document.createElement("div");
-  nouvelleDiv.classList.add("dot");
+slides.forEach((slide, index) => {
+	const nouvelleDiv = document.createElement("div");
+	nouvelleDiv.classList.add("dot");
+	
+	if (index=== actuelSlide) {
+	  nouvelleDiv.classList.add("dot_selected");
+	}
+	dotsConteneur.appendChild(nouvelleDiv);
   
-  if (slides[i].selected) {
-    nouvelleDiv.classList.add("dot_selected");
-  }
-  dotsConteneur.appendChild(nouvelleDiv);
-}
+}); 
 
 
-
-/*
------------  creer new element sur index.html /----------- 
-------------------------------------------------------------------
-------------------------------------------------------------------
- creer function qui fait :	
-	- Crée un nouvel élément div
-	- lui Définir une class
-	- Défini du contenu HTML pour la div
-	- Ajouter le nouvel élément à l'intérieur du conteneur dots 
-
-function createlistDiv(container, className, content) {
-	const nouvelleDiv = document.createElement('div');
-	nouvelleDiv.classList.add('dot');
-	nouvelleDiv.innerHTML = content;
-	container.appendChild(nouvelleDiv);
-  }
-
-  /*   // creer conteneur et Sélectionner l'élément <main #banner .dots>
-	// Utiliser la fonction pour créer et ajouter 4 divs
-	// Ajouter le nouvel élément au html 
-
-  const dotsElement = document.querySelector('main #banner .dots');
-for (let i = 0; i < 4; i++) {
-	createlistDiv(dotsElement, 'div', '');
-  }
-document.querySelector('main #banner .dots').appendChild(nouvelleDiv);*/
