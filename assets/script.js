@@ -35,9 +35,7 @@ let actuelSlide = 0;
 	if (actuelSlide >= slides.length) {
 	  actuelSlide = 0; 
 	  }
-	  BannerImage.setAttribute('src', slides[actuelSlide].image);
-	  Bannertext.innerHTML = slides[actuelSlide].tagLine;
-	  actueldot();
+	  UpdateContenu()
 	});
 
 	arrowLeft.addEventListener("click", () => {
@@ -46,11 +44,14 @@ let actuelSlide = 0;
 	  if (actuelSlide < 0) {
 		  actuelSlide = slides.length - 1;
 		}
-		BannerImage.setAttribute('src', slides[actuelSlide].image);
-		Bannertext.innerHTML = slides[actuelSlide].tagLine;
-		actueldot();
+		UpdateContenu()
 	  });
 
+	  function UpdateContenu() {
+		BannerImage.setAttribute('src', slides[actuelSlide].image);
+		Bannertext.innerHTML = slides[actuelSlide].tagLine;
+		actueldot();	
+	  }
 
 	// Fonction pour mettre à jour les classes des points en fonction de l'index actuel
 
