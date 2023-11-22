@@ -27,7 +27,7 @@ const BannerImage = document.querySelector(".banner-img");
 const Bannertext = document.querySelector("#banner p");
 let actuelSlide = 0;
 
-/// creation evenement sur fleche
+/// Ajoutez des Event Listeners sur les flèches 
 
 arrowRight.addEventListener("click", () => {
   console.log("fleche d");
@@ -47,6 +47,7 @@ arrowLeft.addEventListener("click", () => {
   UpdateContenu();
 });
 
+/// creation fonction mise a jour contenu
 function UpdateContenu() {
   BannerImage.setAttribute("src", slides[actuelSlide].image);
   Bannertext.innerHTML = slides[actuelSlide].tagLine;
@@ -70,6 +71,7 @@ function actueldot() {
   });
 }
 
+// Ajoutez des bullet points au slider
 slides.forEach((slide, index) => {
   const nouvelleDiv = document.createElement("div");
   nouvelleDiv.classList.add("dot");
@@ -78,7 +80,7 @@ slides.forEach((slide, index) => {
     nouvelleDiv.classList.add("dot_selected");
   }
 
-//dot cliquable ///
+/// creation evenement sur fleche dot cliquable ///
   nouvelleDiv.addEventListener("click", () => {
     console.log("click dot");
     actuelSlide = index;
